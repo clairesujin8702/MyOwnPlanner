@@ -8,7 +8,8 @@ env/config.js
 
 ## ETC ##
 !client/dist/index.html
-!client/dist/styles/
+!client/dist/styles/index.css
+!client/dist/styles/index.scss
 .cache/
 *.log
 
