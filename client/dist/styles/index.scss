@@ -50,26 +50,26 @@ hr {
 .searchContainer {
   margin-right: 2em;
 }
-.username-input,
+.email-input,
 .password-input,
 .searchContainer {
   position: relative;
   text-align: left;
 }
-.user,
+.email,
 .password,
 .searchBar {
   padding-left: 2.375em;
   height: 2.4em;
 }
-.inValid-user,
+.inValid-email,
 .inValid-password {
   padding-left: 2.375em;
   height: 2.4em;
   border: 1px solid red;
 }
 
-#username,
+#email,
 #password {
   font-weight: 800;
 }
@@ -107,8 +107,9 @@ hr {
 
 /**** submit && Button ****/
 .submit {
-  margin-top: 1.5em;
-  margin-bottom: 10em;
+  margin-top: 0.5em;
+  margin-bottom: 3em;
+  text-align: center;
 }
 .submit > button {
   background-color: $button-color;
@@ -123,6 +124,10 @@ hr {
   background-color: $button-color-2;
   box-shadow: $box-shadow;
   text-shadow: 1px 1px black;
+}
+#disabled {
+  pointer-events: none;
+  opacity: 0.5;
 }
 /**** new && Button ****/
 .newButton > button {
@@ -211,6 +216,9 @@ hr {
 .submit > #invalid {
   color: red;
   font-size: small;
-  text-align: center;
   padding-top: 0.4em;
+}
+
+#server-backup {
+  text-align: center;
 }

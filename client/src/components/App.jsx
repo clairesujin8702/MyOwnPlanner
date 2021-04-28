@@ -1,29 +1,31 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import Login from './auth/Login.jsx';
 import ToDoList from './toDoList/ToDoList.jsx';
 
 const App = ({ name }) => {
   const [loginStatus, setLoginStatus] = useState(false);
-  const handleAuth = () => {
+  const [username, setUsername] = useState(null);
+
+  const handleAuth = (username) => {
     setLoginStatus(!loginStatus);
+    username && setUsername(username);
   };
+
   return (
     <>
-      {name}
+      by {name}
       <div className='logout'>
         {loginStatus && <button onClick={() => handleAuth()}>Logout</button>}
       </div>
-
       <div className='login-box'>
         {!loginStatus && (
           <div className='login-container'>
-            <Login userInfo={name} handleAuth={handleAuth} />
+            <Login handleAuth={handleAuth} />
           </div>
         )}
       </div>
       <div className='toDo-box'>
-        {loginStatus && <ToDoList userInfo={name} />}
+        {loginStatus && <ToDoList userInfo={username} />}
       </div>
     </>
   );
