@@ -38,10 +38,12 @@ const ToDoList = ({ userInfo }) => {
             <button>New</button>
           </div>
         </div>
-        {mockData.map((task, i) => (
-          <Task key={i} task={task.task} />
-        ))}
-        <hr />
+        <div className='tasks'>
+          {mockData.map((task, i) => (
+            <Task key={i} task={task.task} />
+          ))}
+          <hr />
+        </div>
       </div>
     </>
   );

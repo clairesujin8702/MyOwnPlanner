@@ -87,20 +87,13 @@ hr {
 }
 
 .logout > button {
-  padding: 0.3em 1em;
-}
-
-.logout > button,
-.newButton > button {
   background-color: white;
   box-shadow: 0.2em 0.2em rgba(160, 160, 160, 0.8);
   border: 2px solid black;
+  padding: 0.3em 1em;
 }
 
-.logout > button:hover {
-  color: blue;
-}
-
+/**** submit && Button ****/
 .submit {
   margin-top: 1.5em;
   margin-bottom: 10em;
@@ -111,26 +104,30 @@ hr {
   box-shadow: none;
   border: 2px solid black;
   color: white;
-}
-
-.submit > button {
   padding: 0.4em 0;
   font-size: medium;
   border-radius: 0.5em;
 }
 
+.submit > button:hover {
+  background-color: #2269c0;
+  box-shadow: 0.2em 0.2em rgba(160, 160, 160, 0.8);
+}
+
+/**** new && Button ****/
 .newButton > button {
-  background-color: #317edb;
+  background-color: #fcf6f6;
   padding: 0.2em 0;
   width: 6em;
   height: 2.4em;
-  color: white;
+  color: black;
 }
 
-.submit > button:hover,
+.logout > button:hover,
 .newButton > button:hover {
-  background-color: #2269c0;
-  box-shadow: 0.2em 0.2em rgba(160, 160, 160, 0.8);
+  background-color: #e8e9f0;
+  text-shadow: 1px 1px #464646;
+  color: white;
 }
 
 /**** Login ****/
@@ -157,6 +154,7 @@ hr {
 }
 
 .toDo-container {
+  background-color: #01268b;
   border: 3px solid #01268b;
   border-radius: 1em;
   padding: 0.8em 0;
@@ -182,6 +180,10 @@ hr {
   text-align: center;
   justify-content: space-between;
   padding-left: 0.5em;
+}
+
+.tasks {
+  background-color: white;
 }
 
 .col2 {

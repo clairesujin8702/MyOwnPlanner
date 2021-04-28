@@ -2,10 +2,13 @@ $primary-font-size: 16px;
 $primary-color: rgb(1, 38, 139);
 $button-color: rgb(49, 126, 219);
 $button-color-2: rgb(34, 105, 192);
+$toDo-button-color-1: rgb(252, 246, 246);
+$toDo-button-color-2: rgb(232, 233, 240);
 $shadow-color: rgb(160, 160, 160, 0.8);
 $box-shadow: 0.2em 0.2em $shadow-color;
 $row-border: 1px solid black;
 $toDo-border: 3px solid rgb(1, 38, 139);
+
 $test-border-2: 3px solid rgb(255, 13, 203);
 
 body {
@@ -90,18 +93,15 @@ hr {
   padding-right: 1em;
 }
 .logout > button {
-  padding: 0.3em 1em;
-}
-.logout > button,
-.newButton > button {
   background-color: white;
   box-shadow: $box-shadow;
   border: 2px solid black;
+  padding: 0.3em 1em;
 }
-.logout > button:hover {
-  color: blue;
-}
-
+// .logout > button:hover {
+//   color: blue;
+// }
+/**** submit && Button ****/
 .submit {
   margin-top: 1.5em;
   margin-bottom: 10em;
@@ -111,23 +111,28 @@ hr {
   box-shadow: none;
   border: 2px solid black;
   color: white;
-}
-.submit > button {
   padding: 0.4em 0;
   font-size: medium;
   border-radius: 0.5em;
 }
+.submit > button:hover {
+  background-color: $button-color-2;
+  box-shadow: $box-shadow;
+}
+/**** new && Button ****/
 .newButton > button {
-  background-color: $button-color;
+  background-color: $toDo-button-color-1;
   padding: 0.2em 0;
   width: 6em;
   height: 2.4em;
-  color: white;
+  color: black;
 }
-.submit > button:hover,
+
+.logout > button:hover,
 .newButton > button:hover {
-  background-color: $button-color-2;
-  box-shadow: $box-shadow;
+  background-color: $toDo-button-color-2;
+  text-shadow: 1px 1px rgb(70, 70, 70);
+  color: white;
 }
 
 /**** Login ****/
@@ -151,6 +156,7 @@ hr {
   width: 400px;
 }
 .toDo-container {
+  background-color: $primary-color;
   border: $toDo-border;
   border-radius: 1em;
   padding: 0.8em 0;
@@ -172,6 +178,9 @@ hr {
   text-align: center;
   justify-content: space-between;
   padding-left: 0.5em;
+}
+.tasks {
+  background-color: white;
 }
 .col2 {
   display: flex;
