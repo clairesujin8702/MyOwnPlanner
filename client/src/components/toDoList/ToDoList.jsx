@@ -1,21 +1,53 @@
 import React, { useState } from 'react';
 import Task from './Task.jsx';
 
-const handleSubmit = () => {
-  // newTask & searchTask
-};
-const deleteTask = () => {};
+var mockData = [
+  { id: 1, task: 'loginPage' },
+  { id: 2, task: 'toDoList' },
+  { id: 3, task: 'css work done! 26fonts' },
+];
 
-const ToDoList = ({ userInfo, handleAuth }) => {
-  console.log('ToDoList page : ', userInfo);
-  const [task, setTask] = useState([]);
-  const [newTask, setNewTask] = useState('');
+const ToDoList = ({ handleAuth }) => {
+  const [task, setTask] = useState(mockData);
+  const [isValid, setIsValid] = useState(null);
+  const [searchTask, setSearchTask] = useState('');
+  const [editTask, setEditTask] = useState('');
 
-  let mockData = [
-    { id: 1, task: 'loginPage' },
-    { id: 2, task: 'toDoList' },
-    { id: 3, task: 'css work done! 26fonts' },
-  ];
+  const handleValidation = (e) => {
+    setEditTask(e.target.value);
+    if (editTask.length > 1) {
+      setIsValid(true);
+    }
+    if (editTask.length > 25) {
+      setIsValid(false);
+      alert('Maximum Character Limit Exceeded');
+    }
+    setEditTask(e.target.value);
+  };
+
+  const handleSearch = (e) => {
+    const { name, value } = e.target;
+  };
+
+  const handleSubmit = (e, oldTask) => {
+    event.preventDefault();
+    if (oldTask) {
+      setTask((prevState) => {
+        let updateState = prevState.map((arr) => {
+          if (arr.task === oldTask) {
+            arr.task = editTask;
+          }
+          return arr;
+        });
+        return [...updateState];
+      });
+      setEditTask('');
+    } else {
+      setTask(...task, editTask);
+      setAddTask('');
+      console.log('AddTask is working');
+    }
+  };
 
   return (
     <>
@@ -28,10 +60,12 @@ const ToDoList = ({ userInfo, handleAuth }) => {
               type='text'
               className='searchBar'
               placeholder='search'
-              name='newTask'
-              value={newTask}
-              onChange={(e) => handleChange(e)}
-              onKeyPress={(e) => e.key === 'Enter' && newTask && search(e)}
+              name='searchTask'
+              value={searchTask}
+              onChange={(e) => handleSearch(e)}
+              onKeyPress={(e) =>
+                e.key === 'Enter' && searchTask && handleSubmit(e)
+              }
             />
           </div>
           <div className='newButton'>
@@ -40,7 +74,14 @@ const ToDoList = ({ userInfo, handleAuth }) => {
         </div>
         <div className='tasks'>
           {mockData.map((task, i) => (
-            <Task key={i} task={task.task} />
+            <Task
+              key={'toDo-' + i}
+              task={task.task}
+              isValid={isValid}
+              editTask={editTask}
+              handleValidation={handleValidation}
+              handleSubmit={handleSubmit}
+            />
           ))}
           <hr />
         </div>

@@ -4,7 +4,6 @@ import ToDoList from './toDoList/ToDoList.jsx';
 
 const App = ({ name }) => {
   const [loginStatus, setLoginStatus] = useState(false);
-  const [username, setUsername] = useState(null);
 
   const handleAuth = (username) => {
     setLoginStatus(!loginStatus);
@@ -24,9 +23,7 @@ const App = ({ name }) => {
           </div>
         )}
       </div>
-      <div className='toDo-box'>
-        {loginStatus && <ToDoList userInfo={username} />}
-      </div>
+      <div className='toDo-box'>{loginStatus && <ToDoList />}</div>
     </>
   );
 };

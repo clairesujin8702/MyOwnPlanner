@@ -1,24 +1,35 @@
 import React, { useState } from 'react';
 
-const editTask = () => {};
+const Task = ({ task, isValid, handleValidation, handleSubmit, editTask }) => {
+  const [editStatus, setEditStatus] = useState(false);
 
-export default ({ task }) => {
-  const [editTask, setEditTask] = useState('');
+  const handleEditStatus = () => {
+    setEditStatus(!editStatus);
+  };
+
   const editRow = (
     <div className='editRow'>
       <div className='searchContainer'>
         <input
           type='text'
-          name='editTask'
           className='editTask'
+          name='editTask'
           placeholder={task}
           value={editTask}
-          onChange={(e) => handleChange(e)}
-          onKeyPress={(e) => e.key === 'Enter' && editTask && save(e)}
+          onChange={(e) => handleValidation(e)}
+          onKeyPress={(e) =>
+            e.key === 'Enter' &&
+            isValid !== null &&
+            isValid &&
+            handleSubmit(e, task)
+          }
         />
       </div>
-      <div className='newButton'>
-        <button>Save</button>
+      <div
+        className='newButton'
+        onClick={(e) => isValid !== null && isValid && handleSubmit(e, task)}
+      >
+        <button onClick={() => handleEditStatus()}>Save</button>
       </div>
     </div>
   );
@@ -26,20 +37,25 @@ export default ({ task }) => {
   return (
     <>
       <hr />
-      {editRow}
-      <div className='row'>
-        <div className='col1'>
-          <div id='task'>{task}</div>
-        </div>
-        <div className='col2'>
-          <div id='edit'>
-            <span className='fa fa-pencil task-icon'></span>
+      {editStatus ? (
+        editRow
+      ) : (
+        <div className='row'>
+          <div className='col1'>
+            <div id='task'>{task}</div>
           </div>
-          <div id='delete'>
-            <span className='fa fa-trash task-icon'></span>
+          <div className='col2'>
+            <div id='edit' onClick={() => handleEditStatus()}>
+              <span className='fa fa-pencil task-icon'></span>
+            </div>
+            <div id='delete'>
+              <span className='fa fa-trash task-icon'></span>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 };
+
+export default Task;

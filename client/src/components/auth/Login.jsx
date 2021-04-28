@@ -1,18 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
-const checkValidation = () => {};
-
-const Login = ({ userInfo, handleAuth }) => {
+const Login = ({ handleAuth }) => {
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState(null);
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState(null);
   const [loginStatus, setLoginStatus] = useState(true);
 
-  const handleSubmit = () => {
+  const handleSubmit = (emailInput, passwordInput) => {
     let loginInfo = {
-      params: { email: 'test@rapptrlabs.com', password: 'Test123' },
+      params: { email: emailInput, password: passwordInput },
     };
     axios
       .post('http://dev.rapptrlabs.com/Tests/scripts/user-login.php', loginInfo)
@@ -24,6 +22,7 @@ const Login = ({ userInfo, handleAuth }) => {
         console.log('POST_Auth_', err);
       });
   };
+
   const emailValidation = (e) => {
     const { value } = e.target;
     setEmailError(true);
@@ -61,7 +60,9 @@ const Login = ({ userInfo, handleAuth }) => {
     (emailError !== null || passwordError !== null) ? (
       <button id='disabled'>Login</button>
     ) : (
-      <button onClick={() => handleSubmit()}>Login</button>
+      <button onClick={() => handleSubmit('test@rapptrlabs.com', 'Test123')}>
+        Login
+      </button>
     );
 
   return (
