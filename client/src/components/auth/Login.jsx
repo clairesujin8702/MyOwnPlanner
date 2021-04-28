@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
-const Login = ({ userInfo }) => {
+const Login = ({ userInfo, handleAuth }) => {
   console.log('Login page : ', userInfo);
+  const [user, setUser] = useState(null);
+  const [password, setPassword] = useState(null);
   return (
     <>
       <h1> Rapptr Labs </h1>
@@ -13,11 +15,11 @@ const Login = ({ userInfo }) => {
           <input
             type='text'
             name='user'
-            className='user'
+            className={user === null ? 'user' : 'inValid-user'}
             placeholder='user@rapptrlabs'
           />
         </div>
-        <div id='invalid'>Not a valid email</div>
+        <div id='invalid'>{user === null && 'Not a valid email'}</div>
       </div>
       <div id='password'>Password</div>
       <div className='password-input'>
@@ -25,17 +27,21 @@ const Login = ({ userInfo }) => {
         <input
           type='password'
           name='password'
-          className='password'
+          className={password === null ? 'password' : 'inValid-password'}
           placeholder='Must be at least 4 characters'
         />
-        <div id='invalid'>Not a valid password</div>
+        <div id='invalid'>{user === null && 'Not a valid password'}</div>
       </div>
       <div className='submit'>
-        <button>Login</button>
+        <button onClick={() => handleAuth()}>Login</button>
         <div id='invalid'>
-          The server could not be reached.
-          <br />
-          Please try again later.
+          {user === null && (
+            <>
+              The server could not be reached.
+              <br />
+              Please try again later.
+            </>
+          )}
         </div>
       </div>
     </>

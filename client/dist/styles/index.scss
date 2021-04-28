@@ -62,6 +62,12 @@ hr {
   padding-left: 2.375em;
   height: 2.4em;
 }
+.inValid-user,
+.inValid-password {
+  padding-left: 2.375em;
+  height: 2.4em;
+  border: 1px solid red;
+}
 
 #username,
 #password {
@@ -98,9 +104,7 @@ hr {
   border: 2px solid black;
   padding: 0.3em 1em;
 }
-// .logout > button:hover {
-//   color: blue;
-// }
+
 /**** submit && Button ****/
 .submit {
   margin-top: 1.5em;
@@ -118,6 +122,7 @@ hr {
 .submit > button:hover {
   background-color: $button-color-2;
   box-shadow: $box-shadow;
+  text-shadow: 1px 1px black;
 }
 /**** new && Button ****/
 .newButton > button {
@@ -199,7 +204,8 @@ hr {
   color: red;
   font-size: small;
   padding-left: 0.6em;
-  padding-bottom: 0.4em;
+  margin-bottom: 0.6em;
+  height: 1em;
 }
 
 .submit > #invalid {

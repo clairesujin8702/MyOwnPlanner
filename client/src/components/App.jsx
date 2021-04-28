@@ -4,20 +4,26 @@ import Login from './auth/Login.jsx';
 import ToDoList from './toDoList/ToDoList.jsx';
 
 const App = ({ name }) => {
+  const [loginStatus, setLoginStatus] = useState(false);
+  const handleAuth = () => {
+    setLoginStatus(!loginStatus);
+  };
   return (
     <>
       {name}
       <div className='logout'>
-        <button>Logout</button>
+        {loginStatus && <button onClick={() => handleAuth()}>Logout</button>}
       </div>
 
       <div className='login-box'>
-        <div className='login-container'>
-          <Login userInfo={name} />
-        </div>
+        {!loginStatus && (
+          <div className='login-container'>
+            <Login userInfo={name} handleAuth={handleAuth} />
+          </div>
+        )}
       </div>
       <div className='toDo-box'>
-        <ToDoList userInfo={name} />
+        {loginStatus && <ToDoList userInfo={name} />}
       </div>
     </>
   );

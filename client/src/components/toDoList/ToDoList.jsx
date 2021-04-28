@@ -6,7 +6,7 @@ const handleSubmit = () => {
 };
 const deleteTask = () => {};
 
-const ToDoList = ({ userInfo }) => {
+const ToDoList = ({ userInfo, handleAuth }) => {
   console.log('ToDoList page : ', userInfo);
   const [task, setTask] = useState([]);
   const [newTask, setNewTask] = useState('');
