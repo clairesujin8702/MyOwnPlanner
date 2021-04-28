@@ -1,22 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import Login from './auth/Login.jsx';
 import ToDoList from './toDoList/ToDoList.jsx';
 
 const App = ({ name }) => {
   return (
-    <div>
-      <div>
-        <h1>Hello {name}</h1>
+    <>
+      <h3>Hello {name}</h3>
+      <div className='logout'>
         <button>Logout</button>
       </div>
-      <div>
-        <Login userInfo={name} />
+
+      <div className='login-box'>
+        {/* <div className='login-container'>
+          <Login userInfo={name} />
+        </div> */}
       </div>
-      <div>
+      <div className='toDo-box'>
         <ToDoList userInfo={name} />
       </div>
-    </div>
+    </>
   );
 };
 

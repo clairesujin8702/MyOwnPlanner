@@ -1,10 +1,178 @@
 $primary-font-size: 16px;
+$primary-color: rgb(1, 38, 139);
+$button-color: rgb(49, 126, 219);
+$button-color-2: rgb(34, 105, 192);
+$shadow-color: rgb(160, 160, 160, 0.8);
+$box-shadow: 0.2em 0.2em $shadow-color;
+$row-border: 1px solid black;
+$test-border-1: 3px solid black;
+$test-border-2: 3px solid rgb(255, 13, 203);
 
-html {
+body {
   font-family: 'Open Sans', sans-serif;
   font-size: $primary-font-size;
 }
 
 * {
   box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+}
+
+input {
+  width: 100%;
+}
+
+button {
+  font-weight: 900;
+  cursor: pointer;
+}
+
+/**** search bar & icons ****/
+.searchBar {
+  border-radius: 1.2em;
+  width: 250px;
+}
+.editTask {
+  width: 250px;
+  height: 2.4em;
+  padding: 0 0.5em;
+}
+.searchContainer {
+  margin-right: 2em;
+}
+.username-input,
+.password-input,
+.searchContainer {
+  position: relative;
+  text-align: left;
+}
+.user,
+.password,
+.searchBar {
+  padding-left: 2.375em;
+  height: 2.4em;
+}
+.icons {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2em;
+  height: 2em;
+  text-align: center;
+  top: 0.5em;
+  pointer-events: none;
+  color: #aaa;
+}
+.task-icon {
+  display: block;
+  width: 3em;
+  text-align: center;
+  pointer-events: pointer;
+  color: $primary-color;
+}
+
+/**** Logout && Button ****/
+.logout {
+  text-align: right;
+  padding-right: 1em;
+}
+.logout > button {
+  padding: 0.3em 1em;
+}
+.logout > button,
+.newButton > button {
+  background-color: white;
+  box-shadow: $box-shadow;
+  border: 2px solid black;
+}
+.logout > button:hover {
+  color: blue;
+}
+
+.submit {
+  margin-top: 1.5em;
+  margin-bottom: 10em;
+}
+.submit > button {
+  background-color: $button-color;
+  box-shadow: none;
+  border: 2px solid black;
+  color: white;
+}
+.submit > button {
+  padding: 0.4em 0;
+  font-size: medium;
+  border-radius: 0.5em;
+}
+.newButton > button {
+  background-color: $button-color;
+  padding: 0.2em 0;
+  width: 6em;
+  height: 2.4em;
+  color: white;
+}
+.submit > button:hover,
+.newButton > button:hover {
+  background-color: $button-color-2;
+  box-shadow: $box-shadow;
+}
+
+/**** Login ****/
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+.login-box {
+  margin: 0 auto;
+  max-width: 300px;
+}
+.login-container button {
+  width: 100%;
+}
+
+/**** To-Do List ****/
+.toDo-box {
+  border: $test-border-1;
+  margin: 0 auto;
+  width: 400px;
+}
+.toDo-container {
+  border: $test-border-1;
+  border-radius: 1em;
+  padding: 0.8em 0;
+}
+.toDo-head,
+.editRow {
+  display: flex;
+  justify-content: space-between;
+}
+.toDo-head {
+  padding: 0 0.5em;
+  padding-top: 0.8em;
+}
+.editRow {
+  padding: 0 0.5em;
+}
+.row {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  padding-left: 0.5em;
+}
+.col2 {
+  display: flex;
+  flex-direction: row;
+}
+#task,
+#edit,
+#delete {
+  max-width: 250px;
+  overflow: hidden;
+  font-weight: 800;
+  padding: 0.3em 0;
 }

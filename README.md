@@ -7,9 +7,9 @@ Project to build a simple to-do app where user can login, manage a list of to-do
 For this project, I used the following Technologies in my implementation:
 
 - JavaScript
-- React
-- React Hooks
+- React, React Hooks
 - CSS
+- SASS
 
 ## Installation
 
