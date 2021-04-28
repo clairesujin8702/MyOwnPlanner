@@ -8,6 +8,7 @@ body {
 }
 
 h1 {
+  color: #01268b;
   text-align: center;
 }
 
@@ -18,6 +19,10 @@ input {
 button {
   font-weight: 900;
   cursor: pointer;
+}
+
+hr {
+  border: 1px solid #01268b;
 }
 
 /**** search bar & icons ****/
@@ -48,6 +53,11 @@ button {
 .searchBar {
   padding-left: 2.375em;
   height: 2.4em;
+}
+
+#username,
+#password {
+  font-weight: 800;
 }
 
 .icons {
@@ -142,13 +152,12 @@ button {
 
 /**** To-Do List ****/
 .toDo-box {
-  border: 3px solid black;
   margin: 0 auto;
   width: 400px;
 }
 
 .toDo-container {
-  border: 3px solid black;
+  border: 3px solid #01268b;
   border-radius: 1em;
   padding: 0.8em 0;
 }
@@ -187,6 +196,20 @@ button {
   overflow: hidden;
   font-weight: 800;
   padding: 0.3em 0;
+}
+
+#invalid {
+  color: red;
+  font-size: small;
+  padding-left: 0.6em;
+  padding-bottom: 0.4em;
+}
+
+.submit > #invalid {
+  color: red;
+  font-size: small;
+  text-align: center;
+  padding-top: 0.4em;
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -7,7 +7,7 @@ const Login = ({ userInfo }) => {
     <>
       <h1> Rapptr Labs </h1>
       <div>
-        <div>Username</div>
+        <div id='username'>Username</div>
         <div className='username-input'>
           <span className='fa fa-user icons'></span>
           <input
@@ -17,9 +17,9 @@ const Login = ({ userInfo }) => {
             placeholder='user@rapptrlabs'
           />
         </div>
-        <div>Not a valid email</div>
+        <div id='invalid'>Not a valid email</div>
       </div>
-      <div>Password</div>
+      <div id='password'>Password</div>
       <div className='password-input'>
         <span className='fa fa-lock icons'></span>
         <input
@@ -28,11 +28,11 @@ const Login = ({ userInfo }) => {
           className='password'
           placeholder='Must be at least 4 characters'
         />
-        <div>Not a valid password</div>
+        <div id='invalid'>Not a valid password</div>
       </div>
       <div className='submit'>
         <button>Login</button>
-        <div>
+        <div id='invalid'>
           The server could not be reached.
           <br />
           Please try again later.

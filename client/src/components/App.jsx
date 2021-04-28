@@ -6,15 +6,15 @@ import ToDoList from './toDoList/ToDoList.jsx';
 const App = ({ name }) => {
   return (
     <>
-      <h3>Hello {name}</h3>
+      {name}
       <div className='logout'>
         <button>Logout</button>
       </div>
 
       <div className='login-box'>
-        {/* <div className='login-container'>
+        <div className='login-container'>
           <Login userInfo={name} />
-        </div> */}
+        </div>
       </div>
       <div className='toDo-box'>
         <ToDoList userInfo={name} />
