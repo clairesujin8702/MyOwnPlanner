@@ -4,7 +4,7 @@ import Task from './Task.jsx';
 var mockData = [
   { id: 1, task: 'loginPage' },
   { id: 2, task: 'toDoList' },
-  { id: 3, task: 'css work done! 26fonts' },
+  { id: 3, task: 'css work' },
 ];
 
 const ToDoList = ({ handleAuth }) => {
