@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 
-const Task = ({ task, isValid, handleValidation, handleSubmit, editTask }) => {
+const Task = ({
+  key,
+  task,
+  isValid,
+  editTask,
+  handleValidation,
+  handleSubmit,
+  handleDelete,
+}) => {
   const [editStatus, setEditStatus] = useState(false);
 
   const handleEditStatus = () => {
@@ -48,7 +56,7 @@ const Task = ({ task, isValid, handleValidation, handleSubmit, editTask }) => {
             <div id='edit' onClick={() => handleEditStatus()}>
               <span className='fa fa-pencil task-icon'></span>
             </div>
-            <div id='delete'>
+            <div id='delete' onClick={(e) => handleDelete(e, task)}>
               <span className='fa fa-trash task-icon'></span>
             </div>
           </div>

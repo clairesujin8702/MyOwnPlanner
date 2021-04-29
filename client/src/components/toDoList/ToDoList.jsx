@@ -12,6 +12,12 @@ const ToDoList = ({ handleAuth }) => {
   const [isValid, setIsValid] = useState(null);
   const [searchTask, setSearchTask] = useState('');
   const [editTask, setEditTask] = useState('');
+  const [newTask, setNewTask] = useState('');
+  const [addStatus, setAddStatus] = useState(false);
+
+  const handleAddStatus = () => {
+    setAddStatus(!addStatus);
+  };
 
   const handleValidation = (e) => {
     setEditTask(e.target.value);
@@ -27,6 +33,7 @@ const ToDoList = ({ handleAuth }) => {
 
   const handleSearch = (e) => {
     const { name, value } = e.target;
+    //need to work on
   };
 
   const handleSubmit = (e, oldTask) => {
@@ -43,11 +50,50 @@ const ToDoList = ({ handleAuth }) => {
       });
       setEditTask('');
     } else {
-      setTask(...task, editTask);
-      setAddTask('');
+      const id = task.length ? task[task.length - 1].id + 1 : 0;
+      console.log('id', id);
+      setTask([...task, { id: id, task: editTask }]);
+      setEditTask('');
       console.log('AddTask is working');
     }
   };
+
+  const handleDelete = (e, preTask) => {
+    console.log('delete is working', preTask);
+    setTask((prevState) => {
+      let updateState = prevState.filter((arr) => arr.task !== preTask && arr);
+      console.log('task', updateState);
+      return [...updateState];
+    });
+  };
+
+  const newTaskRow = (
+    <>
+      <hr />
+      <div className='editRow'>
+        <div className='searchContainer'>
+          <input
+            type='text'
+            className='editTask'
+            value={editTask}
+            onChange={(e) => handleValidation(e)}
+            onKeyPress={(e) =>
+              e.key === 'Enter' &&
+              isValid !== null &&
+              isValid &&
+              handleSubmit(e)
+            }
+          />
+        </div>
+        <div
+          className='newButton'
+          onClick={(e) => isValid !== null && isValid && handleSubmit(e)}
+        >
+          <button onClick={(e) => handleSubmit(e)}>Save</button>
+        </div>
+      </div>
+    </>
+  );
 
   return (
     <>
@@ -64,23 +110,26 @@ const ToDoList = ({ handleAuth }) => {
               value={searchTask}
               onChange={(e) => handleSearch(e)}
               onKeyPress={(e) =>
-                e.key === 'Enter' && searchTask && handleSubmit(e)
+                e.key === 'Enter' && searchTask && handleSearch(e)
               }
             />
           </div>
           <div className='newButton'>
-            <button>New</button>
+            <button onClick={() => handleAddStatus()}>New</button>
           </div>
         </div>
+
         <div className='tasks'>
-          {mockData.map((task, i) => (
+          {addStatus && newTaskRow}
+          {task.map((task, i) => (
             <Task
-              key={'toDo-' + i}
+              key={i}
               task={task.task}
               isValid={isValid}
               editTask={editTask}
               handleValidation={handleValidation}
               handleSubmit={handleSubmit}
+              handleDelete={handleDelete}
             />
           ))}
           <hr />
