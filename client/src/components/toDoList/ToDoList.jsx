@@ -11,33 +11,46 @@ const ToDoList = ({ handleAuth }) => {
   const [task, setTask] = useState(mockData);
   const [isValid, setIsValid] = useState(null);
   const [searchTask, setSearchTask] = useState('');
-  const [editTask, setEditTask] = useState('');
+  const [searchList, setSearchList] = useState('');
+  const [editNewTask, setEditNewTask] = useState('');
   const [newTask, setNewTask] = useState('');
   const [addStatus, setAddStatus] = useState(false);
 
   const handleValidation = (e) => {
-    setEditTask(e.target.value);
-    if (editTask.length > 1) {
+    setEditNewTask(e.target.value);
+    if (editNewTask.length > 1 && editNewTask.length < 25) {
       setIsValid(true);
     }
-    if (editTask.length > 25) {
+    if (editNewTask.length > 25) {
       setIsValid(false);
       alert('Maximum Character Limit Exceeded');
     }
-    setEditTask(e.target.value);
+    setEditNewTask(e.target.value);
   };
 
   const handleSearch = (e) => {
     setSearchTask(e.target.value);
-    const searchedTask = task.filter((arr) => {
-      if (arr.task === searchTask) {
-        return arr;
-      }
-    });
+    const searchedTask = task.filter((arr) =>
+      arr.task
+        .toLowerCase()
+        .split(' ')
+        .join('')
+        .includes(searchTask.split(' ').join('').toLowerCase())
+    );
+    setSearchList(searchedTask);
   };
 
   const handleAddStatus = () => {
     setAddStatus(!addStatus);
+    setSearchTask('');
+  };
+
+  const handleDelete = (e, preTask) => {
+    setTask((prevState) => {
+      let updateState = prevState.filter((arr) => arr.task !== preTask && arr);
+      return [...updateState];
+    });
+    setSearchTask('');
   };
 
   const handleSubmit = (e, oldTask) => {
@@ -46,25 +59,19 @@ const ToDoList = ({ handleAuth }) => {
       setTask((prevState) => {
         let updateState = prevState.map((arr) => {
           if (arr.task === oldTask) {
-            arr.task = editTask;
+            arr.task = editNewTask;
           }
           return arr;
         });
         return [...updateState];
       });
-      setEditTask('');
+      setEditNewTask('');
     } else {
       const id = task.length ? task[task.length - 1].id + 1 : 0;
-      setTask([...task, { id: id, task: editTask }]);
-      setEditTask('');
+      setTask([...task, { id: id, task: editNewTask }]);
+      setEditNewTask('');
+      setAddStatus('');
     }
-  };
-
-  const handleDelete = (e, preTask) => {
-    setTask((prevState) => {
-      let updateState = prevState.filter((arr) => arr.task !== preTask && arr);
-      return [...updateState];
-    });
   };
 
   const newTaskRow = (
@@ -74,8 +81,8 @@ const ToDoList = ({ handleAuth }) => {
         <div className='searchContainer'>
           <input
             type='text'
-            className='editTask'
-            value={editTask}
+            className='editNewTask'
+            value={editNewTask}
             onChange={(e) => handleValidation(e)}
             onKeyPress={(e) =>
               e.key === 'Enter' &&
@@ -85,15 +92,17 @@ const ToDoList = ({ handleAuth }) => {
             }
           />
         </div>
-        <div
-          className='newButton'
-          onClick={(e) => isValid !== null && isValid && handleSubmit(e)}
-        >
-          <button onClick={(e) => handleSubmit(e)}>Save</button>
+        <div className='newButton'>
+          <button
+            onClick={(e) => isValid !== null && isValid && handleSubmit(e)}
+          >
+            Save
+          </button>
         </div>
       </div>
     </>
   );
+  const currentRow = !searchTask ? task : searchList;
 
   return (
     <>
@@ -121,12 +130,12 @@ const ToDoList = ({ handleAuth }) => {
 
         <div className='tasks'>
           {addStatus && newTaskRow}
-          {task.map((task, i) => (
+          {currentRow.map((task, i) => (
             <Task
               key={i}
               task={task.task}
               isValid={isValid}
-              editTask={editTask}
+              editNewTask={editNewTask}
               handleValidation={handleValidation}
               handleSubmit={handleSubmit}
               handleDelete={handleDelete}

@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 
 const Task = ({
-  key,
   task,
   isValid,
-  editTask,
+  editNewTask,
   handleValidation,
   handleSubmit,
   handleDelete,
@@ -20,10 +19,9 @@ const Task = ({
       <div className='searchContainer'>
         <input
           type='text'
-          className='editTask'
-          name='editTask'
+          className='editNewTask'
           placeholder={task}
-          value={editTask}
+          value={editNewTask}
           onChange={(e) => handleValidation(e)}
           onKeyPress={(e) =>
             e.key === 'Enter' &&
