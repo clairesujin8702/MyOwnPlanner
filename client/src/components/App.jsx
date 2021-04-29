@@ -7,7 +7,6 @@ const App = ({ name }) => {
 
   const handleAuth = (username) => {
     setLoginStatus(!loginStatus);
-    username && setUsername(username);
   };
 
   return (

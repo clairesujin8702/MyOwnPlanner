@@ -9,8 +9,6 @@ $box-shadow: 0.2em 0.2em $shadow-color;
 $row-border: 1px solid black;
 $toDo-border: 3px solid rgb(1, 38, 139);
 
-$test-border-2: 3px solid rgb(255, 13, 203);
-
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: $primary-font-size;
@@ -37,19 +35,16 @@ button {
 hr {
   border: 1px solid $primary-color;
 }
-/**** search bar & icons ****/
+
+/**** search && input & icons ****/
+.searchContainer {
+  margin-right: 2em;
+}
 .searchBar {
   border-radius: 1.2em;
   width: 250px;
 }
-.editNewTask {
-  width: 250px;
-  height: 2.4em;
-  padding: 0 0.5em;
-}
-.searchContainer {
-  margin-right: 2em;
-}
+
 .email-input,
 .password-input,
 .searchContainer {
@@ -62,18 +57,21 @@ hr {
   padding-left: 2.375em;
   height: 2.4em;
 }
+#email,
+#password {
+  font-weight: 800;
+}
 .inValid-email,
 .inValid-password {
   padding-left: 2.375em;
   height: 2.4em;
   border: 1px solid red;
 }
-
-#email,
-#password {
-  font-weight: 800;
+.editNewTask {
+  width: 250px;
+  height: 2.4em;
+  padding: 0 0.5em;
 }
-
 .icons {
   position: absolute;
   z-index: 2;
@@ -91,6 +89,21 @@ hr {
   text-align: center;
   pointer-events: pointer;
   color: $primary-color;
+}
+
+/**** new && Button ****/
+.newButton > button {
+  background-color: $toDo-button-color-1;
+  padding: 0.2em 0;
+  width: 6em;
+  height: 2.4em;
+  color: black;
+}
+.logout > button:hover,
+.newButton > button:hover {
+  background-color: $toDo-button-color-2;
+  text-shadow: 1px 1px rgb(70, 70, 70);
+  color: white;
 }
 
 /**** Logout && Button ****/
@@ -128,21 +141,6 @@ hr {
 #disabled {
   pointer-events: none;
   opacity: 0.5;
-}
-/**** new && Button ****/
-.newButton > button {
-  background-color: $toDo-button-color-1;
-  padding: 0.2em 0;
-  width: 6em;
-  height: 2.4em;
-  color: black;
-}
-
-.logout > button:hover,
-.newButton > button:hover {
-  background-color: $toDo-button-color-2;
-  text-shadow: 1px 1px rgb(70, 70, 70);
-  color: white;
 }
 
 /**** Login ****/

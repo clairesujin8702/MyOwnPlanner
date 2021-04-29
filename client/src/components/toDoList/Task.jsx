@@ -33,7 +33,9 @@ const Task = ({
       </div>
       <div
         className='newButton'
-        onClick={(e) => isValid !== null && isValid && handleSubmit(e, task)}
+        onClick={(e) =>
+          isValid !== null && isValid && editNewTask && handleSubmit(e, task)
+        }
       >
         <button onClick={() => handleEditStatus()}>Save</button>
       </div>

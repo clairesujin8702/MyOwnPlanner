@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import Task from './Task.jsx';
 
 var mockData = [
-  { id: 1, task: 'loginPage' },
-  { id: 2, task: 'toDoList' },
-  { id: 3, task: 'css work' },
+  { id: 1, task: 'Login Page' },
+  { id: 2, task: 'To-Do List' },
+  { id: 3, task: 'Css work' },
 ];
 
 const ToDoList = ({ handleAuth }) => {
@@ -66,6 +66,7 @@ const ToDoList = ({ handleAuth }) => {
         return [...updateState];
       });
       setEditNewTask('');
+      setSearchTask('');
     } else {
       const id = task.length ? task[task.length - 1].id + 1 : 0;
       setTask([...task, { id: id, task: editNewTask }]);

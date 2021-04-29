@@ -25,8 +25,8 @@ const Login = ({ handleAuth }) => {
 
   const emailValidation = (e) => {
     const { value } = e.target;
-    setEmailError(true);
     setEmail(value);
+    setEmailError(true);
     value.indexOf(' ') > 0 && alert('invalid input: Please remove space');
 
     if (
@@ -77,7 +77,7 @@ const Login = ({ handleAuth }) => {
             className={
               emailError !== null && emailError ? 'inValid-email' : 'email'
             }
-            placeholder='user@rapptrlabs'
+            placeholder='user@rapptrlabs.com'
             onChange={(e) => emailValidation(e)}
             onKeyPress={(e) =>
               e.key === 'Enter' &&
@@ -91,6 +91,7 @@ const Login = ({ handleAuth }) => {
           {emailError !== null && emailError && 'Not a valid email'}
         </div>
       </div>
+
       <div id='password'>Password</div>
       <div className='password-input'>
         <span className='fa fa-lock icons'></span>
@@ -114,18 +115,19 @@ const Login = ({ handleAuth }) => {
           {passwordError !== null && passwordError && 'Not a valid password'}
         </div>
       </div>
+
       <div className='submit'>
         {submitButton}
         <div id='invalid'>
           {!loginStatus && (
             <>
-              The server could not be reached.
-              <br />
+              The server could not be reached. <br />
               Please try again later!
             </>
           )}
         </div>
       </div>
+
       <div id='server-backup'>
         {!loginStatus && (
           <a href='#' onClick={() => handleAuth()}>

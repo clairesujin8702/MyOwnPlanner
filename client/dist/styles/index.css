@@ -25,20 +25,14 @@ hr {
   border: 1px solid #01268b;
 }
 
-/**** search bar & icons ****/
+/**** search && input & icons ****/
+.searchContainer {
+  margin-right: 2em;
+}
+
 .searchBar {
   border-radius: 1.2em;
   width: 250px;
-}
-
-.editNewTask {
-  width: 250px;
-  height: 2.4em;
-  padding: 0 0.5em;
-}
-
-.searchContainer {
-  margin-right: 2em;
 }
 
 .email-input,
@@ -55,6 +49,11 @@ hr {
   height: 2.4em;
 }
 
+#email,
+#password {
+  font-weight: 800;
+}
+
 .inValid-email,
 .inValid-password {
   padding-left: 2.375em;
@@ -62,9 +61,10 @@ hr {
   border: 1px solid red;
 }
 
-#email,
-#password {
-  font-weight: 800;
+.editNewTask {
+  width: 250px;
+  height: 2.4em;
+  padding: 0 0.5em;
 }
 
 .icons {
@@ -85,6 +85,22 @@ hr {
   text-align: center;
   pointer-events: pointer;
   color: #01268b;
+}
+
+/**** new && Button ****/
+.newButton > button {
+  background-color: #fcf6f6;
+  padding: 0.2em 0;
+  width: 6em;
+  height: 2.4em;
+  color: black;
+}
+
+.logout > button:hover,
+.newButton > button:hover {
+  background-color: #e8e9f0;
+  text-shadow: 1px 1px #464646;
+  color: white;
 }
 
 /**** Logout && Button ****/
@@ -126,22 +142,6 @@ hr {
 #disabled {
   pointer-events: none;
   opacity: 0.5;
-}
-
-/**** new && Button ****/
-.newButton > button {
-  background-color: #fcf6f6;
-  padding: 0.2em 0;
-  width: 6em;
-  height: 2.4em;
-  color: black;
-}
-
-.logout > button:hover,
-.newButton > button:hover {
-  background-color: #e8e9f0;
-  text-shadow: 1px 1px #464646;
-  color: white;
 }
 
 /**** Login ****/
