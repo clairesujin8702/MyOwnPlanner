@@ -15,10 +15,6 @@ const ToDoList = ({ handleAuth }) => {
   const [newTask, setNewTask] = useState('');
   const [addStatus, setAddStatus] = useState(false);
 
-  const handleAddStatus = () => {
-    setAddStatus(!addStatus);
-  };
-
   const handleValidation = (e) => {
     setEditTask(e.target.value);
     if (editTask.length > 1) {
@@ -32,8 +28,16 @@ const ToDoList = ({ handleAuth }) => {
   };
 
   const handleSearch = (e) => {
-    const { name, value } = e.target;
-    //need to work on
+    setSearchTask(e.target.value);
+    const searchedTask = task.filter((arr) => {
+      if (arr.task === searchTask) {
+        return arr;
+      }
+    });
+  };
+
+  const handleAddStatus = () => {
+    setAddStatus(!addStatus);
   };
 
   const handleSubmit = (e, oldTask) => {
@@ -51,18 +55,14 @@ const ToDoList = ({ handleAuth }) => {
       setEditTask('');
     } else {
       const id = task.length ? task[task.length - 1].id + 1 : 0;
-      console.log('id', id);
       setTask([...task, { id: id, task: editTask }]);
       setEditTask('');
-      console.log('AddTask is working');
     }
   };
 
   const handleDelete = (e, preTask) => {
-    console.log('delete is working', preTask);
     setTask((prevState) => {
       let updateState = prevState.filter((arr) => arr.task !== preTask && arr);
-      console.log('task', updateState);
       return [...updateState];
     });
   };
