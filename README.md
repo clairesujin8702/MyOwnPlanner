@@ -1,6 +1,6 @@
-## Rapptr Labs React Test
+## MyOwnPlanner
 
-Project to build a simple to-do app where user can login, manage a list of to-do's, and logout.
+Plan your life with this app, simply write down what todo and remind me of things to do.
 
 ## Technologies
 
