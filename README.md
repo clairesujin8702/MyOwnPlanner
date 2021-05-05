@@ -1,6 +1,6 @@
 ## MyOwnPlanner
 
-Plan your life with this app, simply write down what todo and remind me of things to do.
+Plan your life with this app, simply write down what to do and remind me of things to do.
 
 ## Technologies
 
