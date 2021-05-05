@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 const Task = ({
+  id,
   task,
   isValid,
   editNewTask,
@@ -13,7 +14,6 @@ const Task = ({
   const handleEditStatus = () => {
     setEditStatus(!editStatus);
   };
-
   const editRow = (
     <div className='editRow'>
       <div className='searchContainer'>
@@ -27,14 +27,14 @@ const Task = ({
             e.key === 'Enter' &&
             isValid !== null &&
             isValid &&
-            handleSubmit(e, task)
+            handleSubmit(e, id)
           }
         />
       </div>
       <div
         className='newButton'
         onClick={(e) =>
-          isValid !== null && isValid && editNewTask && handleSubmit(e, task)
+          isValid !== null && isValid && editNewTask && handleSubmit(e, id)
         }
       >
         <button onClick={() => handleEditStatus()}>Save</button>
@@ -56,7 +56,7 @@ const Task = ({
             <div id='edit' onClick={() => handleEditStatus()}>
               <span className='fa fa-pencil task-icon'></span>
             </div>
-            <div id='delete' onClick={(e) => handleDelete(e, task)}>
+            <div id='delete' onClick={(e) => handleDelete(e, id)}>
               <span className='fa fa-trash task-icon'></span>
             </div>
           </div>

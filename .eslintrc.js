@@ -11,7 +11,7 @@ module.exports = {
   },
   rules: {
     'no-mixed-spaces-and-tabs': 2,
-    indent: [2, 2],
+    // indent: [2, 2],
     camelcase: 2,
     curly: 2,
     eqeqeq: [2, 'smart'],

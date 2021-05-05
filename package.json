@@ -1,7 +1,7 @@
 {
-  "name": "Rapptr-Labs",
+  "name": "MyOwnPlanner",
   "version": "1.0.0",
-  "description": "Project to build a simple to-do app where user can login, manage a list of to-do's, and logout.",
+  "description": "Plan your life with this app, simply write down what todo and remind me of things to do",
   "main": "server/index.js",
   "scripts": {
     "build-prod": "webpack --mode production",

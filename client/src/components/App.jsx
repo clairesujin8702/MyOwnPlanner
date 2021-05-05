@@ -4,14 +4,18 @@ import ToDoList from './toDoList/ToDoList.jsx';
 
 const App = ({ name }) => {
   const [loginStatus, setLoginStatus] = useState(false);
+  const [loginName, setLoginName] = useState(name);
 
   const handleAuth = (username) => {
+    if (username) {
+      setLoginName(username);
+    }
     setLoginStatus(!loginStatus);
   };
 
   return (
     <>
-      by {name}
+      Owned by {loginName}
       <div className='logout'>
         {loginStatus && <button onClick={() => handleAuth()}>Logout</button>}
       </div>

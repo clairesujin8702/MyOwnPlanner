@@ -13,7 +13,7 @@ const Login = ({ handleAuth }) => {
       params: { email: emailInput, password: passwordInput },
     };
     axios
-      .post('http://dev.rapptrlabs.com/Tests/scripts/user-login.php', loginInfo)
+      .get('/login', loginInfo)
       .then((data) => {
         handleAuth(data.user.username);
       })
@@ -67,7 +67,7 @@ const Login = ({ handleAuth }) => {
 
   return (
     <>
-      <h1> Rapptr Labs </h1>
+      <h1> More Fun but Simpler Life </h1>
       <div>
         <div id='email'>Email</div>
         <div className='email-input'>
@@ -77,7 +77,7 @@ const Login = ({ handleAuth }) => {
             className={
               emailError !== null && emailError ? 'inValid-email' : 'email'
             }
-            placeholder='user@rapptrlabs.com'
+            placeholder='user@fun.com'
             onChange={(e) => emailValidation(e)}
             onKeyPress={(e) =>
               e.key === 'Enter' &&

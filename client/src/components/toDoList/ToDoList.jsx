@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import Task from './Task.jsx';
 
 var mockData = [
-  { id: 1, task: 'Login Page' },
-  { id: 2, task: 'To-Do List' },
-  { id: 3, task: 'Css work' },
+  { id: 1, task: 'Middleware - Token' },
+  { id: 2, task: 'Backend - Server and Database' },
+  { id: 3, task: 'Database - Google sheets' },
 ];
 
 const ToDoList = ({ handleAuth }) => {
@@ -35,7 +35,7 @@ const ToDoList = ({ handleAuth }) => {
         .toLowerCase()
         .split(' ')
         .join('')
-        .includes(searchTask.split(' ').join('').toLowerCase())
+        .includes(e.target.value.split(' ').join('').toLowerCase())
     );
     setSearchList(searchedTask);
   };
@@ -45,20 +45,20 @@ const ToDoList = ({ handleAuth }) => {
     setSearchTask('');
   };
 
-  const handleDelete = (e, preTask) => {
+  const handleDelete = (e, id) => {
     setTask((prevState) => {
-      let updateState = prevState.filter((arr) => arr.task !== preTask && arr);
+      let updateState = prevState.filter((arr) => arr.id !== id && arr);
       return [...updateState];
     });
     setSearchTask('');
   };
 
-  const handleSubmit = (e, oldTask) => {
+  const handleSubmit = (e, oldId) => {
     event.preventDefault();
-    if (oldTask) {
+    if (oldId) {
       setTask((prevState) => {
         let updateState = prevState.map((arr) => {
-          if (arr.task === oldTask) {
+          if (arr.id === oldId) {
             arr.task = editNewTask;
           }
           return arr;
@@ -83,6 +83,7 @@ const ToDoList = ({ handleAuth }) => {
           <input
             type='text'
             className='editNewTask'
+            placeholder='Add new task'
             value={editNewTask}
             onChange={(e) => handleValidation(e)}
             onKeyPress={(e) =>
@@ -134,6 +135,7 @@ const ToDoList = ({ handleAuth }) => {
           {currentRow.map((task, i) => (
             <Task
               key={i}
+              id={task.id}
               task={task.task}
               isValid={isValid}
               editNewTask={editNewTask}
