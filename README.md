@@ -2,6 +2,9 @@
 
 Plan your life with this app, simply write down what to do and remind me of things to do.
 
+![Auth](client/dist/img/myPlannerAuth.gif)
+![To-do](client/dist/img/myPlannerTodos.gif)
+
 ## Technologies
 
 For this project, I used the following Technologies in my implementation:

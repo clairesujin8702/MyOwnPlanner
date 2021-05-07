@@ -7,6 +7,7 @@ package-lock.json
 env/config.js
 
 ## ETC ##
+!client/dist/img
 !client/dist/index.html
 !client/dist/styles/index.css
 !client/dist/styles/index.scss
