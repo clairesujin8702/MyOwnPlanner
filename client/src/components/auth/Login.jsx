@@ -67,7 +67,7 @@ const Login = ({ handleAuth }) => {
 
   return (
     <>
-      <h1> More Fun but Simpler Life </h1>
+      <h1> Let's plan your life My Own Planner </h1>
       <div>
         <div id='email'>Email</div>
         <div className='email-input'>
