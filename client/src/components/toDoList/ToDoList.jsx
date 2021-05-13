@@ -18,7 +18,7 @@ const ToDoList = ({ handleAuth }) => {
 
   const handleValidation = (e) => {
     setEditNewTask(e.target.value);
-    if (editNewTask.length > 1 && editNewTask.length < 25) {
+    if (editNewTask.length > 0 && editNewTask.length < 25) {
       setIsValid(true);
     }
     if (editNewTask.length > 25) {
@@ -54,6 +54,7 @@ const ToDoList = ({ handleAuth }) => {
   };
 
   const handleSubmit = (e, oldId) => {
+    console.log('oldId : ', oldId);
     event.preventDefault();
     if (oldId) {
       setTask((prevState) => {
