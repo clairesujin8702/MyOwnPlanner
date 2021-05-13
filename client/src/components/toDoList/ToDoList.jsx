@@ -72,6 +72,7 @@ const ToDoList = ({ handleAuth }) => {
       setTask([...task, { id: id, task: editNewTask }]);
       setEditNewTask('');
       setAddStatus('');
+      setIsValid(null);
     }
   };
 
