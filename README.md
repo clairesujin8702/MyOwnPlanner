@@ -3,7 +3,7 @@
 Plan your life with this app, simply write down what to do and remind me of things to do.
 
 ![Auth](client/dist/img/Auth.gif)
-![To-do](client/dist/img/myPlannerTodos.gif)
+![To-do](client/dist/img/ToDoList.gif)
 
 ## Technologies
 
